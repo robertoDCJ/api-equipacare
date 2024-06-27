@@ -4,4 +4,7 @@ export interface calcularDadosInterface {
   intervaloDePicoCME: number;
   numeroLeitosUTI: number;
   numeroLeitosInternacao: number;
+  numeroLeitosRPA: number;
+  numeroLeitosHospitalDia: number;
+  numeroLeitosObservacao: number;
 }

@@ -68,6 +68,9 @@ export const calcular = async (req: Request, res: Response) => {
       intervaloDePicoCME,
       numeroLeitosUTI,
       numeroLeitosInternacao,
+      numeroLeitosRPA,
+      numeroLeitosObservacao,
+      numeroLeitosHospitalDia,
     }: reqInterface = req.body;
 
     // Calcula o Volume Diário de Material em Litros usando os inputs passados pelo usuario
@@ -77,6 +80,9 @@ export const calcular = async (req: Request, res: Response) => {
       intervaloDePicoCME,
       numeroLeitosUTI,
       numeroLeitosInternacao,
+      numeroLeitosRPA,
+      numeroLeitosObservacao,
+      numeroLeitosHospitalDia,
     });
 
     // ----- CALCULO AUTOCLAVES -----

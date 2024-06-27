@@ -4,4 +4,7 @@ export interface reqInterface {
   intervaloDePicoCME: number;
   numeroLeitosUTI: number;
   numeroLeitosInternacao: number;
+  numeroLeitosRPA: number;
+  numeroLeitosObservacao: number;
+  numeroLeitosHospitalDia: number;
 }
