@@ -32,6 +32,7 @@ model Autoclaves {
   tempoDeCargaEDescargaMin Int 
   tempoParaTesteDiarioDeBDMin Int 
   tempoParaProcedimentoDiarioDeAquecimentoMin Int
+  preco Int
 }
 
 model LavadorasTermo {
@@ -52,5 +53,6 @@ model LavadorasTermo {
   quantidadeTraqueiasPorLeitoUTIDia Int
   tempoMedioCicloAssistenciaVentilatoriaComCargaMaxMin Int
   intervaloMedioEntreCiclosMin  Int
+  preco Int
 }
 
