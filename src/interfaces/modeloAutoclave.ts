@@ -9,4 +9,5 @@ export interface modeloAutoclave {
   tempoParaTesteDiarioDeBDMin: number;
   tempoParaProcedimentoDiarioDeAquecimentoMin: number;
   tempoDisponivelDiarioMin?: number;
+  preco: number;
 }
