@@ -1,8 +1,5 @@
-import {
-  calcularAutoclavesInterface,
-  resultadoTodosModelosInterface,
-} from "../interfaces";
-import { formatarPercentual } from "./formatarPercentual";
+import { calcularAutoclavesInterface } from "../interfaces";
+import { resultadoNaoFormatadoInterface } from "../interfaces/resultadoNaoFormatadoInterface";
 
 export const calcularAutoclaves = async ({
   volumeDiarioDeMaterialLitros,
@@ -10,11 +7,12 @@ export const calcularAutoclaves = async ({
   modelos,
   numeroAutoclaves,
 }: calcularAutoclavesInterface) => {
-  const resultadoTodosModelos: resultadoTodosModelosInterface[] = [];
+  const resultadoTodosModelos: resultadoNaoFormatadoInterface[] = [];
 
   modelos.forEach((modelo) => {
     const nomeModelo = modelo.name;
     const preco = modelo.preco;
+    const marcaId = modelo.marcaId;
     const volumeQuePrecisaraSerProcessadoNoIntervaloDePicoLitros =
       volumeDiarioDeMaterialLitros * 0.9;
     const intervaloDiarioDePicoMinutos =
@@ -35,12 +33,13 @@ export const calcularAutoclaves = async ({
       (volumeQuePrecisaraSerProcessadoNoIntervaloDePicoLitros /
         capacidadeDeProcessamentoNoIntervaloDePico) *
       100;
-    const percentualFormatado = formatarPercentual(percentualDeUltilizacao);
+    // const percentualFormatado = formatarPercentual(percentualDeUltilizacao);
 
     resultadoTodosModelos.push({
       nomeModelo,
-      percentualFormatado,
       preco,
+      marcaId,
+      percentualDeUltilizacao,
     });
   });
 

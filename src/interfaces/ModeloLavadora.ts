@@ -33,4 +33,5 @@ export interface modeloLavadora {
   quantidadeDeTermosOfertadasNoProjeto?: number;
   minutosDisponiveisDiariamenteSomandoTodosOsEquipamentosMin?: number;
   percentualDeUtilizaçãoDaCapacidadeMaxDeProcessamentoDasTermos?: number;
+  preco: number;
 }

@@ -1,6 +1,9 @@
+import { PrismaClient } from "@prisma/client";
 import { modeloAutoclave } from "../interfaces";
 import { calcularAutoclaves } from "./calcularAutoclaves";
-import { obterResultadosFinais } from "./obterResultadosFinais";
+import { obterResultadosFinaisTest } from "./obterResultadosFinaisTest";
+
+const prisma = new PrismaClient();
 
 export const calcularResultadosAutoclaves = async (
   modelos: modeloAutoclave[],
@@ -22,14 +25,28 @@ export const calcularResultadosAutoclaves = async (
   );
 
   const resultadosAchatados = resultados.flat().filter(Boolean);
-  const resultadosFiltrados = obterResultadosFinais(resultadosAchatados, [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-  ]);
+  const resultadosFiltrados = obterResultadosFinaisTest(
+    resultadosAchatados,
+    [1, 2, 3, 4, 5, 6]
+  );
+  const resultadosFiltradosAchatados = resultadosFiltrados.flat();
 
-  return [numeroAutoclaves, resultadosFiltrados.flat()];
+  const resultadosFinais = await Promise.all(
+    resultadosFiltradosAchatados.map(async (item) => {
+      const marca = await prisma.marcas.findUnique({
+        where: {
+          id: item.marcaId,
+        },
+      });
+
+      const itemSlice = {
+        marca: marca?.name,
+        modelo: item.nomeModelo,
+        preco: item.preco,
+      };
+      return await itemSlice;
+    })
+  );
+
+  return [numeroAutoclaves, resultadosFinais];
 };
