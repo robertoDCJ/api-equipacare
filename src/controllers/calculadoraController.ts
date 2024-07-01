@@ -116,7 +116,7 @@ export const calcular = async (req: Request, res: Response) => {
     let numeroDeLavadoras: number = 1;
 
     while (true) {
-      resultadoLavadoras = await calculos.calcularLavadoras(
+      resultadoLavadoras = await calculos.calcularResultadosLavadoras(
         volumeDiario.estimativaVolumeTotalDiarioPorMaterial,
         volumeDiario.numeroDeCirurgiasPorDia,
         numeroLeitosUTI,
@@ -125,8 +125,8 @@ export const calcular = async (req: Request, res: Response) => {
       );
 
       if (
-        resultadoLavadoras.resultadoFinal.length > 5 &&
-        resultadoLavadoras.resultadoFinal.length < 12
+        resultadoLavadoras.flat().length > 5 &&
+        resultadoLavadoras.flat().length < 12
       ) {
         break;
       }
@@ -134,6 +134,7 @@ export const calcular = async (req: Request, res: Response) => {
       numeroDeLavadoras++;
     }
 
+    // return res.status(200).json(resultadoLavadoras);
     return res.status(200).json([resultadosAutoclaves, resultadoLavadoras]);
   } catch (error) {
     console.error(

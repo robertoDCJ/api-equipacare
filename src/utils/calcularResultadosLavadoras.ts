@@ -1,27 +1,27 @@
 import { PrismaClient } from "@prisma/client";
-import { modeloAutoclave } from "../interfaces";
-import { calcularAutoclaves } from "./calcularAutoclaves";
+import { modeloLavadora } from "../interfaces";
+import { calcularLavadoras } from "./calcularLavadoras";
 import { obterResultadosFinaisTest } from "./obterResultadosFinaisTest";
 import { resultadosFinais } from "./resultadosFinais";
 
 const prisma = new PrismaClient();
 
-export const calcularResultadosAutoclaves = async (
-  modelos: modeloAutoclave[],
-  intervaloDePicoCME: any,
-  volumeDiario: number,
-  numeroAutoclaves: number
+export const calcularResultadosLavadoras = async (
+  estimativaVolumeTotalDiarioMaterial: number,
+  cirurgiasPorDia: number,
+  numeroleitosUTI: number,
+  quantidadeDeTermos: number,
+  modelos: modeloLavadora[]
 ) => {
   const resultados: any[] = await Promise.all(
     modelos.map(async (modelo) => {
-      let inputsCalcularModelos = {
-        volumeDiarioDeMaterialLitros: volumeDiario,
-        intervaloDePicoCME: intervaloDePicoCME,
-        modelos: [modelo],
-        numeroAutoclaves: numeroAutoclaves,
-      };
-
-      return await calcularAutoclaves(inputsCalcularModelos);
+      return await calcularLavadoras(
+        estimativaVolumeTotalDiarioMaterial,
+        cirurgiasPorDia,
+        numeroleitosUTI,
+        quantidadeDeTermos,
+        [modelo]
+      );
     })
   );
 
@@ -30,9 +30,10 @@ export const calcularResultadosAutoclaves = async (
     resultadosAchatados,
     [1, 2, 3, 4, 5, 6]
   );
+
   const resultadosFiltradosAchatados = resultadosFiltrados.flat();
 
   const resultadoFinal = await resultadosFinais(resultadosFiltradosAchatados);
 
-  return [numeroAutoclaves, resultadoFinal];
+  return [quantidadeDeTermos, resultadoFinal];
 };

@@ -1,6 +1,5 @@
 import { modeloLavadora } from "../interfaces";
-import { formatarPercentual } from "./formatarPercentual";
-import { obterResultadosFinais } from "./obterResultadosFinais";
+import { resultadoNaoFormatadoInterface } from "../interfaces/resultadoNaoFormatadoInterface";
 
 export const calcularLavadoras = (
   estimativaVolumeTotalDiarioMaterial: number,
@@ -9,8 +8,12 @@ export const calcularLavadoras = (
   quantidadeDeTermos: number,
   modelos: modeloLavadora[]
 ) => {
-  const resultadoLavadoras = modelos.map((modelo) => {
+  const resultadoTodosModelos: resultadoNaoFormatadoInterface[] = [];
+
+  modelos.forEach((modelo) => {
     const nomeModelo = modelo.name;
+    const marcaId = modelo.marcaId;
+    const preco = modelo.preco;
 
     const capacidadeProcessamentoUEInstrumentos =
       modelo.capacidadeDeCargaDeBandejasDeInstrumentos /
@@ -53,31 +56,39 @@ export const calcularLavadoras = (
     const minutosDisponiveisDiariamenteSomandoEquipamentos =
       60 * 24 * quantidadeDeTermos;
 
-    const percentualUtilizacaoCapacidadeMaxima =
+    const percentualDeUltilizacao =
       (demandaTempoDia / minutosDisponiveisDiariamenteSomandoEquipamentos) *
       100;
 
-    const percentualFormatado = formatarPercentual(
-      percentualUtilizacaoCapacidadeMaxima
-    );
-
-    return {
+    // const percentualFormatado = formatarPercentual(
+    //   percentualUtilizacaoCapacidadeMaxima
+    // );
+    resultadoTodosModelos.push({
       nomeModelo,
-      percentualFormatado,
-    };
+      preco,
+      marcaId,
+      percentualDeUltilizacao,
+    });
+    // return {
+    //   nomeModelo,
+    //   preco,
+    //   marcaId,
+    //   percentualUtilizacao,
+    // };
   });
 
-  const resultadosAchatados = resultadoLavadoras.flat().filter(Boolean);
-  const resultadoFiltrados = obterResultadosFinais(resultadosAchatados, [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-  ]);
+  // const resultadosAchatados = resultadoLavadoras.flat().filter(Boolean);
+  // const resultadoFiltrados = obterResultadosFinais(resultadosAchatados, [
+  //   "A",
+  //   "B",
+  //   "C",
+  //   "D",
+  //   "E",
+  //   "F",
+  // ]);
 
-  const resultadoFinal = resultadoFiltrados.flat();
+  // const resultadoFinal = resultadoFiltrados.flat();
 
-  return { quantidadeDeTermos, resultadoFinal };
+  // return { quantidadeDeTermos, resultadoFinal };
+  return resultadoTodosModelos;
 };
