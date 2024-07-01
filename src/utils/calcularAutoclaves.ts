@@ -1,5 +1,7 @@
-import { calcularAutoclavesInterface } from "../interfaces";
-import { resultadoNaoFormatadoInterface } from "../interfaces/resultadoNaoFormatadoInterface";
+import {
+  calcularAutoclavesInterface,
+  resultadoNaoFormatadoInterface,
+} from "../interfaces";
 
 export const calcularAutoclaves = async ({
   volumeDiarioDeMaterialLitros,

@@ -1,8 +1,13 @@
-export const filtrarModelos = (resultados: any[], marca: string) => {
+import { resultadoNaoFormatadoInterface } from "../interfaces";
+
+export const filtrarModelos = (
+  resultados: resultadoNaoFormatadoInterface[],
+  marca: number
+) => {
   const resultadoModelos = resultados
     .filter(
-      (item: any) =>
-        item.nomeModelo.includes(marca) && item.percentualFormatado < 90
+      (item: resultadoNaoFormatadoInterface) =>
+        item.marcaId === marca && item.percentualDeUltilizacao < 90
     )
     .sort((a: any, b: any) => b.percentualFormatado - a.percentualFormatado);
 

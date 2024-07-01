@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { modeloLavadora } from "../interfaces";
 import { calcularLavadoras } from "./calcularLavadoras";
-import { obterResultadosFinaisTest } from "./obterResultadosFinaisTest";
+import { obterResultadosFinais } from "./obterResultadosFinais";
 import { resultadosFinais } from "./resultadosFinais";
 
 const prisma = new PrismaClient();
@@ -26,7 +26,7 @@ export const calcularResultadosLavadoras = async (
   );
 
   const resultadosAchatados = resultados.flat().filter(Boolean);
-  const resultadosFiltrados = obterResultadosFinaisTest(
+  const resultadosFiltrados = obterResultadosFinais(
     resultadosAchatados,
     [1, 2, 3, 4, 5, 6]
   );

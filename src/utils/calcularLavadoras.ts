@@ -1,5 +1,4 @@
-import { modeloLavadora } from "../interfaces";
-import { resultadoNaoFormatadoInterface } from "../interfaces/resultadoNaoFormatadoInterface";
+import { modeloLavadora, resultadoNaoFormatadoInterface } from "../interfaces";
 
 export const calcularLavadoras = (
   estimativaVolumeTotalDiarioMaterial: number,

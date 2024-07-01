@@ -1,5 +1,9 @@
+import { resultadoNaoFormatadoInterface } from "../interfaces";
 import { filtrarModelos } from "./filtrarModelos";
 
-export const obterResultadosFinais = (resultados: any[], marcas: string[]) => {
+export const obterResultadosFinais = (
+  resultados: resultadoNaoFormatadoInterface[],
+  marcas: number[]
+) => {
   return marcas.map((marca) => filtrarModelos(resultados, marca));
 };
