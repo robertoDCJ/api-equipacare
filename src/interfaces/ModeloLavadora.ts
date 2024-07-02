@@ -1,4 +1,5 @@
 export interface modeloLavadora {
+  id: number;
   name: string;
   marcaId: number;
   volumeTotalCamaraLitros: number;

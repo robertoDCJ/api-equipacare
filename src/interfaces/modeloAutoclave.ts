@@ -1,4 +1,5 @@
 export interface modeloAutoclave {
+  id: number;
   name: string;
   marcaId: number;
   volumeTotalDaCamaraLitros: number;
