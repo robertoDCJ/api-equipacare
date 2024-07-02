@@ -5,7 +5,7 @@ const app = express();
 const cors = require("cors");
 
 let corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://equipacare-cme.vercel.app",
   optionsSuccessStatus: 200,
 };
 
