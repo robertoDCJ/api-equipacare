@@ -1,7 +1,10 @@
+import { PrismaClient } from "@prisma/client";
 import { modeloAutoclave } from "../interfaces";
 import { calcularAutoclaves } from "./calcularAutoclaves";
 import { obterResultadosFinais } from "./obterResultadosFinais";
 import { resultadosFinais } from "./resultadosFinais";
+
+const prisma = new PrismaClient();
 
 export const calcularResultadosAutoclaves = async (
   modelos: modeloAutoclave[],

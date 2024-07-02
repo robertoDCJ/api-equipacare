@@ -1,7 +1,10 @@
+import { PrismaClient } from "@prisma/client";
 import { modeloLavadora } from "../interfaces";
 import { calcularLavadoras } from "./calcularLavadoras";
 import { obterResultadosFinais } from "./obterResultadosFinais";
 import { resultadosFinais } from "./resultadosFinais";
+
+const prisma = new PrismaClient();
 
 export const calcularResultadosLavadoras = async (
   estimativaVolumeTotalDiarioMaterial: number,
