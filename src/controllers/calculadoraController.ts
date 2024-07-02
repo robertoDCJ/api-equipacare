@@ -22,15 +22,15 @@ const getAllAutoclaves = async () => {
   );
 };
 
-getAllAutoclaves()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
-  .catch(async (e) => {
-    console.log(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });
+getAllAutoclaves();
+// .then(async () => {
+//   await prisma.$disconnect();
+// })
+// .catch(async (e) => {
+//   console.log(e);
+//   await prisma.$disconnect();
+//   process.exit(1);
+// });
 
 // Pega todos os modelos de lavadoras termo ao rodar o projeto
 let lavadoras: any[] = [];
@@ -49,15 +49,15 @@ const getAllLavadoras = async () => {
   );
 };
 
-getAllLavadoras()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
-  .catch(async (e) => {
-    console.log(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });
+getAllLavadoras();
+// .then(async () => {
+//   await prisma.$disconnect();
+// })
+// .catch(async (e) => {
+//   console.log(e);
+//   await prisma.$disconnect();
+//   process.exit(1);
+// });
 
 export const calcular = async (req: Request, res: Response) => {
   try {
