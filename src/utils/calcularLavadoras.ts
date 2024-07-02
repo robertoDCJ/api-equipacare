@@ -50,8 +50,6 @@ export const calcularLavadoras = (
       tempoNecessarioParaProcessarADemandaDeInstrumentosMin +
       tempoNecessarioParaProcessarDemandaDeAssistVent;
 
-    // const QuantidadeDeTermos = quantidadeDeTermos;
-
     const minutosDisponiveisDiariamenteSomandoEquipamentos =
       60 * 24 * quantidadeDeTermos;
 
@@ -59,35 +57,13 @@ export const calcularLavadoras = (
       (demandaTempoDia / minutosDisponiveisDiariamenteSomandoEquipamentos) *
       100;
 
-    // const percentualFormatado = formatarPercentual(
-    //   percentualUtilizacaoCapacidadeMaxima
-    // );
     resultadoTodosModelos.push({
       nomeModelo,
       preco,
       marcaId,
       percentualDeUltilizacao,
     });
-    // return {
-    //   nomeModelo,
-    //   preco,
-    //   marcaId,
-    //   percentualUtilizacao,
-    // };
   });
 
-  // const resultadosAchatados = resultadoLavadoras.flat().filter(Boolean);
-  // const resultadoFiltrados = obterResultadosFinais(resultadosAchatados, [
-  //   "A",
-  //   "B",
-  //   "C",
-  //   "D",
-  //   "E",
-  //   "F",
-  // ]);
-
-  // const resultadoFinal = resultadoFiltrados.flat();
-
-  // return { quantidadeDeTermos, resultadoFinal };
   return resultadoTodosModelos;
 };
