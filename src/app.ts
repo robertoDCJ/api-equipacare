@@ -1,18 +1,25 @@
 import bodyParser from "body-parser";
-import express from "express";
+import cors from "cors";
+import express, { Application } from "express";
 import calculadoraRoutes from "./routes/calculadoraRoutes";
-const app = express();
-const cors = require("cors");
+const app: Application = express();
+// const cors = require("cors");
 
-let corsOptions = {
-  origin: "https://equipacare-cme.vercel.app",
-  optionsSuccessStatus: 200,
+const allowedOrigins = [
+  "http://localhost:3001",
+  "https://equipacare-cme.vercel.app",
+];
+
+const options: cors.CorsOptions = {
+  origin: allowedOrigins,
 };
+
+app.use(cors(options));
 
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/calculadora", cors(corsOptions), calculadoraRoutes);
+app.use("/calculadora", calculadoraRoutes);
 
 export default app;
