@@ -11,7 +11,7 @@
     "start": "nodemon src/server.ts",
     "prod": "nodemon dist/server.js",
     "build": "prisma generate && tsc",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate --no-engine"
   },
   "keywords": [],
   "author": "",
