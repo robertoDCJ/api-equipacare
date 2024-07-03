@@ -1,113 +1,109 @@
 import { PrismaClient } from "@prisma/client";
-import { withAccelerate } from "@prisma/extension-accelerate";
 import { Request, Response } from "express";
 import { modeloAutoclave, modeloLavadora, reqInterface } from "../interfaces";
 import * as calculos from "../utils";
 
-const prisma = new PrismaClient().$extends(withAccelerate());
+const prisma = new PrismaClient();
 
 // Pega todos os modelos de autoclaves ao rodar o projeto
 let autoclaves: modeloAutoclave[] = [];
 
-const getAllAutoclaves = async (): Promise<void> => {
-  autoclaves = [];
-
-  try {
-    let response = await prisma.autoclaves.findMany({
-      cacheStrategy: { ttl: 60 },
-    });
-
-    response.forEach((item) => {
-      autoclaves.push({
-        id: item.id,
-        name: item.name,
-        preco: item.preco,
-        marcaId: item.marcaId,
-        volumeTotalDaCamaraLitros: item.volumeTotalDaCamaraLitros,
-        volumeUtilDaCamaraLitros: item.volumeUtilDaCamaraLitros,
-        tempoTotalMedioDoCicloInclindoSecagemMin:
-          item.tempoTotalMedioDoCicloInclindoSecagemMin,
-        tempoDeCargaEDescargaMin: item.tempoDeCargaEDescargaMin,
-        tempoParaTesteDiarioDeBDMin: item.tempoParaTesteDiarioDeBDMin,
-        tempoParaProcedimentoDiarioDeAquecimentoMin:
-          item.tempoParaProcedimentoDiarioDeAquecimentoMin,
-      });
-    });
-    // autoclaves.push(response);
-
-    console.log("*** autoclaves obtidas com sucesso", autoclaves);
-  } catch (error) {
-    console.error("Erro ao obter autoclaves:", error);
-  }
-};
-
-getAllAutoclaves();
-// .then(async () => {
-//   await prisma.$disconnect();
-// })
-// .catch(async (e) => {
-//   console.log(e);
-//   await prisma.$disconnect();
-//   process.exit(1);
-// });
-
-// Pega todos os modelos de lavadoras termo ao rodar o projeto
-let lavadoras: modeloLavadora[] = [];
-
-const getAllLavadoras = async (): Promise<void> => {
-  lavadoras = [];
-
-  try {
-    let response = await prisma.lavadorasTermo.findMany({
-      cacheStrategy: { ttl: 60 },
-    });
-
-    response.forEach((item) => {
-      lavadoras.push({
-        id: item.id,
-        name: item.name,
-        preco: item.preco,
-        marcaId: item.marcaId,
-        volumeTotalCamaraLitros: item.volumeTotalCamaraLitros,
-        capacidadeDeCargaDeBandejasDeInstrumentos:
-          item.capacidadeDeCargaDeBandejasDeInstrumentos,
-        capacidadeDeCargaTraqueias: item.capacidadeDeCargaTraqueias,
-        intervaloMedioEntreCiclosMin: item.intervaloMedioEntreCiclosMin,
-        tempoMedioCicloInstrumentosComCargaMaximaMin:
-          item.tempoMedioCicloInstrumentosComCargaMaximaMin,
-        tempoMedioCicloAssistenciaVentilatoriaComCargaMaximaMin:
-          item.tempoMedioCicloAssistenciaVentilatoriaComCargaMaximaMin,
-        numerodeBandejasPorUE: item.numerodeBandejasPorUE,
-        interveloMedioEntreCiclosMIn: item.interveloMedioEntreCiclosMIn,
-        quantidadeDeTraqueiasPorCirurgia: item.quantidadeDeTraqueiasPorCirurgia,
-        quantidadeTraqueiasPorLeitoUTIDia:
-          item.quantidadeTraqueiasPorLeitoUTIDia,
-        tempoMedioCicloAssistenciaVentilatoriaComCargaMaxMin:
-          item.tempoMedioCicloAssistenciaVentilatoriaComCargaMaxMin,
-        tempoMedioCicloInstrumentosComCargaMaxima:
-          item.tempoMedioCicloInstrumentosComCargaMaxima,
-      });
-    });
-
-    // lavadoras.push(response);
-
-    console.log("*** lavadoras obtidas com sucesso", lavadoras);
-  } catch (error) {
-    console.error("Erro ao obter lavadoras:", error);
-  }
-};
-
-getAllLavadoras();
-// .then(async () => {
-//   await prisma.$disconnect();
-// })
-// .catch(async (e) => {
-//   console.log(e);
-//   await prisma.$disconnect();
-//   process.exit(1);
-// });
-
 export const calcular = async (req: Request, res: Response) => {
+  const getAllAutoclaves = async (): Promise<void> => {
+    autoclaves = [];
+
+    try {
+      let response = await prisma.autoclaves.findMany();
+
+      response.forEach((item) => {
+        autoclaves.push({
+          id: item.id,
+          name: item.name,
+          preco: item.preco,
+          marcaId: item.marcaId,
+          volumeTotalDaCamaraLitros: item.volumeTotalDaCamaraLitros,
+          volumeUtilDaCamaraLitros: item.volumeUtilDaCamaraLitros,
+          tempoTotalMedioDoCicloInclindoSecagemMin:
+            item.tempoTotalMedioDoCicloInclindoSecagemMin,
+          tempoDeCargaEDescargaMin: item.tempoDeCargaEDescargaMin,
+          tempoParaTesteDiarioDeBDMin: item.tempoParaTesteDiarioDeBDMin,
+          tempoParaProcedimentoDiarioDeAquecimentoMin:
+            item.tempoParaProcedimentoDiarioDeAquecimentoMin,
+        });
+      });
+      // autoclaves.push(response);
+
+      console.log("*** autoclaves obtidas com sucesso", autoclaves);
+    } catch (error) {
+      console.error("Erro ao obter autoclaves:", error);
+    }
+  };
+  // getAllAutoclaves();
+  // .then(async () => {
+  //   await prisma.$disconnect();
+  // })
+  // .catch(async (e) => {
+  //   console.log(e);
+  //   await prisma.$disconnect();
+  //   process.exit(1);
+  // });
+
+  // Pega todos os modelos de lavadoras termo ao rodar o projeto
+  let lavadoras: modeloLavadora[] = [];
+
+  const getAllLavadoras = async (): Promise<void> => {
+    lavadoras = [];
+
+    try {
+      let response = await prisma.lavadorasTermo.findMany();
+
+      response.forEach((item) => {
+        lavadoras.push({
+          id: item.id,
+          name: item.name,
+          preco: item.preco,
+          marcaId: item.marcaId,
+          volumeTotalCamaraLitros: item.volumeTotalCamaraLitros,
+          capacidadeDeCargaDeBandejasDeInstrumentos:
+            item.capacidadeDeCargaDeBandejasDeInstrumentos,
+          capacidadeDeCargaTraqueias: item.capacidadeDeCargaTraqueias,
+          intervaloMedioEntreCiclosMin: item.intervaloMedioEntreCiclosMin,
+          tempoMedioCicloInstrumentosComCargaMaximaMin:
+            item.tempoMedioCicloInstrumentosComCargaMaximaMin,
+          tempoMedioCicloAssistenciaVentilatoriaComCargaMaximaMin:
+            item.tempoMedioCicloAssistenciaVentilatoriaComCargaMaximaMin,
+          numerodeBandejasPorUE: item.numerodeBandejasPorUE,
+          interveloMedioEntreCiclosMIn: item.interveloMedioEntreCiclosMIn,
+          quantidadeDeTraqueiasPorCirurgia:
+            item.quantidadeDeTraqueiasPorCirurgia,
+          quantidadeTraqueiasPorLeitoUTIDia:
+            item.quantidadeTraqueiasPorLeitoUTIDia,
+          tempoMedioCicloAssistenciaVentilatoriaComCargaMaxMin:
+            item.tempoMedioCicloAssistenciaVentilatoriaComCargaMaxMin,
+          tempoMedioCicloInstrumentosComCargaMaxima:
+            item.tempoMedioCicloInstrumentosComCargaMaxima,
+        });
+      });
+
+      // lavadoras.push(response);
+
+      console.log("*** lavadoras obtidas com sucesso", lavadoras);
+    } catch (error) {
+      console.error("Erro ao obter lavadoras:", error);
+    }
+  };
+  // getAllLavadoras();
+  // .then(async () => {
+  //   await prisma.$disconnect();
+  // })
+  // .catch(async (e) => {
+  //   console.log(e);
+  //   await prisma.$disconnect();
+  //   process.exit(1);
+  // });
+
+  await getAllLavadoras();
+  await getAllAutoclaves();
   try {
     //Recebe os inputs do usuario
     const {
