@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
+import { withAccelerate } from "@prisma/extension-accelerate";
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient().$extends(withAccelerate());
 
 export const resultadosFinais = async (resultadosFiltradosAchatados: any[]) => {
   const resultado = await Promise.all(
@@ -9,6 +10,7 @@ export const resultadosFinais = async (resultadosFiltradosAchatados: any[]) => {
         where: {
           id: item.marcaId,
         },
+        cacheStrategy: { ttl: 60 },
       });
 
       const itemSlice = {

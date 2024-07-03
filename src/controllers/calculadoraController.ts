@@ -1,9 +1,10 @@
 import { PrismaClient } from "@prisma/client";
+import { withAccelerate } from "@prisma/extension-accelerate";
 import { Request, Response } from "express";
 import { modeloAutoclave, modeloLavadora, reqInterface } from "../interfaces";
 import * as calculos from "../utils";
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient().$extends(withAccelerate());
 
 // Pega todos os modelos de autoclaves ao rodar o projeto
 let autoclaves: modeloAutoclave[] = [];
@@ -12,7 +13,9 @@ const getAllAutoclaves = async (): Promise<void> => {
   autoclaves = [];
 
   try {
-    let response = await prisma.autoclaves.findMany();
+    let response = await prisma.autoclaves.findMany({
+      cacheStrategy: { ttl: 60 },
+    });
 
     response.forEach((item) => {
       autoclaves.push({
@@ -55,7 +58,9 @@ const getAllLavadoras = async (): Promise<void> => {
   lavadoras = [];
 
   try {
-    let response = await prisma.lavadorasTermo.findMany();
+    let response = await prisma.lavadorasTermo.findMany({
+      cacheStrategy: { ttl: 60 },
+    });
 
     response.forEach((item) => {
       lavadoras.push({
