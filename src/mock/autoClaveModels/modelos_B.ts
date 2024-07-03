@@ -11,6 +11,7 @@
 //     tempoDoCicloConsiderandoCargaEDescargaMin: 60.0,
 //     tempoParaTesteDiarioDeBDMin: 30.0,
 //     tempoParaProcedimentoDiarioDeAquecimentoMin: 20.0,
+//     preco: 2100,
 //   },
 //   {
 //     name: "B2",
@@ -22,6 +23,7 @@
 //     tempoDoCicloConsiderandoCargaEDescargaMin: 60.0,
 //     tempoParaTesteDiarioDeBDMin: 30.0,
 //     tempoParaProcedimentoDiarioDeAquecimentoMin: 20.0,
+//     preco: 2200,
 //   },
 //   {
 //     name: "B3",
@@ -33,6 +35,7 @@
 //     tempoDoCicloConsiderandoCargaEDescargaMin: 60.0,
 //     tempoParaTesteDiarioDeBDMin: 30.0,
 //     tempoParaProcedimentoDiarioDeAquecimentoMin: 20.0,
+//     preco: 2300,
 //   },
 //   {
 //     name: "B4",
@@ -44,6 +47,7 @@
 //     tempoDoCicloConsiderandoCargaEDescargaMin: 60.0,
 //     tempoParaTesteDiarioDeBDMin: 30.0,
 //     tempoParaProcedimentoDiarioDeAquecimentoMin: 20.0,
+//     preco: 2400,
 //   },
 //   {
 //     name: "B5",
@@ -55,6 +59,7 @@
 //     tempoDoCicloConsiderandoCargaEDescargaMin: 65.0,
 //     tempoParaTesteDiarioDeBDMin: 30.0,
 //     tempoParaProcedimentoDiarioDeAquecimentoMin: 20.0,
+//     preco: 2500,
 //   },
 //   {
 //     name: "B6",
@@ -66,6 +71,7 @@
 //     tempoDoCicloConsiderandoCargaEDescargaMin: 65.0,
 //     tempoParaTesteDiarioDeBDMin: 30.0,
 //     tempoParaProcedimentoDiarioDeAquecimentoMin: 20.0,
+//     preco: 2600,
 //   },
 //   {
 //     name: "B7",
@@ -77,6 +83,7 @@
 //     tempoDoCicloConsiderandoCargaEDescargaMin: 70.0,
 //     tempoParaTesteDiarioDeBDMin: 30.0,
 //     tempoParaProcedimentoDiarioDeAquecimentoMin: 20.0,
+//     preco: 2700,
 //   },
 //   {
 //     name: "B8",
@@ -88,5 +95,6 @@
 //     tempoDoCicloConsiderandoCargaEDescargaMin: 90.0,
 //     tempoParaTesteDiarioDeBDMin: 30.0,
 //     tempoParaProcedimentoDiarioDeAquecimentoMin: 20.0,
+//     preco: 2800,
 //   },
 // ];

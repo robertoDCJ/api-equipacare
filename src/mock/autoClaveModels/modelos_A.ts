@@ -10,6 +10,7 @@
 //     tempoDeCargaEDescargaMin: 10.0,
 //     tempoParaTesteDiarioDeBDMin: 30.0,
 //     tempoParaProcedimentoDiarioDeAquecimentoMin: 20,
+//     preco: 1800,
 //   },
 //   {
 //     name: "A2",
@@ -21,6 +22,7 @@
 //     tempoDoCicloConsiderandoCargaEDescargaMin: 63.0,
 //     tempoParaTesteDiarioDeBDMin: 30.0,
 //     tempoParaProcedimentoDiarioDeAquecimentoMin: 20.0,
+//     preco: 1900,
 //   },
 
 //   {
@@ -33,6 +35,7 @@
 //     tempoDoCicloConsiderandoCargaEDescargaMin: 63.0,
 //     tempoParaTesteDiarioDeBDMin: 30.0,
 //     tempoParaProcedimentoDiarioDeAquecimentoMin: 20.0,
+//     preco: 2000,
 //   },
 //   {
 //     name: "A4",
@@ -44,6 +47,7 @@
 //     tempoDoCicloConsiderandoCargaEDescargaMin: 63.0,
 //     tempoParaTesteDiarioDeBDMin: 30.0,
 //     tempoParaProcedimentoDiarioDeAquecimentoMin: 20.0,
+//     preco: 2100,
 //   },
 
 //   {
@@ -56,6 +60,7 @@
 //     tempoDoCicloConsiderandoCargaEDescargaMin: 66.0,
 //     tempoParaTesteDiarioDeBDMin: 30.0,
 //     tempoParaProcedimentoDiarioDeAquecimentoMin: 20.0,
+//     preco: 2200,
 //   },
 //   {
 //     name: "A6",
@@ -67,6 +72,7 @@
 //     tempoDoCicloConsiderandoCargaEDescargaMin: 66.0,
 //     tempoParaTesteDiarioDeBDMin: 30.0,
 //     tempoParaProcedimentoDiarioDeAquecimentoMin: 20.0,
+//     preco: 2300,
 //   },
 //   {
 //     name: "A7",
@@ -78,6 +84,7 @@
 //     tempoDoCicloConsiderandoCargaEDescargaMin: 66.0,
 //     tempoParaTesteDiarioDeBDMin: 30.0,
 //     tempoParaProcedimentoDiarioDeAquecimentoMin: 20.0,
+//     preco: 2400,
 //   },
 //   {
 //     name: "A8",
@@ -89,6 +96,7 @@
 //     tempoDoCicloConsiderandoCargaEDescargaMin: 68.0,
 //     tempoParaTesteDiarioDeBDMin: 30.0,
 //     tempoParaProcedimentoDiarioDeAquecimentoMin: 20.0,
+//     preco: 2500,
 //   },
 //   {
 //     name: "A9",
@@ -100,5 +108,6 @@
 //     tempoDoCicloConsiderandoCargaEDescargaMin: 65.0,
 //     tempoParaTesteDiarioDeBDMin: 30.0,
 //     tempoParaProcedimentoDiarioDeAquecimentoMin: 20.0,
+//     preco: 2600,
 //   },
 // ];
