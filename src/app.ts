@@ -6,6 +6,7 @@ const app: Application = express();
 // const cors = require("cors");
 
 const allowedOrigins = [
+  "http://localhost:3000",
   "http://localhost:3001",
   "https://equipacare-cme.vercel.app",
 ];
