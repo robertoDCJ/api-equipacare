@@ -151,8 +151,8 @@ export const calcular = async (req: Request, res: Response) => {
       );
 
       if (
-        resultadoLavadoras.flat().length > 5 &&
-        resultadoLavadoras.flat().length < 12
+        resultadoLavadoras.flat().length > 5
+        // resultadoLavadoras.flat().length < 12
       ) {
         break;
       }
