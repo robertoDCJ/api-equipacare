@@ -9,6 +9,7 @@ const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:3001",
   "https://equipacare-cme.vercel.app",
+  "https://equipacare-cme-git-master-rodrigmeiras-projects.vercel.app",
 ];
 
 const options: cors.CorsOptions = {
