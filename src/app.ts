@@ -14,9 +14,12 @@ const allowedOrigins = [
 
 const options: cors.CorsOptions = {
   origin: allowedOrigins,
+  optionsSuccessStatus: 200,
 };
 
 app.use(cors(options));
+
+app.options("/calculadora", cors(options));
 
 app.use(express.json());
 app.use(bodyParser.json());
