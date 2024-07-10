@@ -17,7 +17,7 @@ const options: cors.CorsOptions = {
   optionsSuccessStatus: 200,
 };
 
-app.use(cors(options));
+// app.use(cors(options));
 
 app.options("/calculadora", cors(options));
 
@@ -25,6 +25,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/calculadora", calculadoraRoutes);
+// app.use("/calculadora", calculadoraRoutes);
+app.post("/calculadora", cors(options), calculadoraRoutes);
 
 export default app;
