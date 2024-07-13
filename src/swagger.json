@@ -14,7 +14,7 @@
       "description": "API em ambiente de desenvolvimento"
     },
     {
-      "url": "https://api-equipacare.vercel.app/",
+      "url": "https://api-equipacare.vercel.app/calculadora/calcular-dados",
       "description": "API em ambiente de produção"
     }
   ],
