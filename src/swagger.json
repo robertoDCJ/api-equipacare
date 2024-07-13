@@ -1,0 +1,102 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "api-equipacare",
+    "description": "API para calculo de autoclaves e lavadoras",
+    "contact": {
+      "email": "robertox70@hotmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/calculadora/calcular-dados",
+      "description": "API em ambiente de desenvolvimento"
+    },
+    {
+      "url": "https://api-equipacare.vercel.app/",
+      "description": "API em ambiente de produção"
+    }
+  ],
+  "paths": {
+    "/": {
+      "post": {
+        "summary": "Calculo da quantidade e modelos de autoclaves e lavadoras",
+        "description": "Essa rota irá calcular a quantidade e os modelos de autoclaves e lavadoras que o hospital irá precisar no seu CME (Central de Material e Esterilização)",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Inputs"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "numeroSalasCirurgicas": 12,
+                    "numeroCirurgiasSalaDia": 6,
+                    "intervaloDePicoCME": 12,
+                    "numeroLeitosUTI": 30,
+                    "numeroLeitosInternacao": 38,
+                    "numeroLeitosRPA": 37,
+                    "numeroLeitosObservacao": 37,
+                    "numeroLeitosHospitalDia": 37
+                  }
+                },
+                "example-2": {
+                  "value": {
+                    "numeroSalasCirurgicas": 6,
+                    "numeroCirurgiasSalaDia": 3,
+                    "intervaloDePicoCME": 8,
+                    "numeroLeitosUTI": 60,
+                    "numeroLeitosInternacao": 40,
+                    "numeroLeitosRPA": 20,
+                    "numeroLeitosObservacao": 25,
+                    "numeroLeitosHospitalDia": 25
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Inputs": {
+        "type": "object",
+        "properties": {
+          "numeroSalasCirurgicas": {
+            "type": "number"
+          },
+          "numeroCirurgiasSalaDia": {
+            "type": "number"
+          },
+          "intervaloDePicoCME": {
+            "type": "number"
+          },
+          "numeroLeitosUTI": {
+            "type": "number"
+          },
+          "numeroLeitosInternacao": {
+            "type": "number"
+          },
+          "numeroLeitosRPA": {
+            "type": "number"
+          },
+          "numeroLeitosObservacao": {
+            "type": "number"
+          },
+          "numeroLeitosHospitalDia": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}
